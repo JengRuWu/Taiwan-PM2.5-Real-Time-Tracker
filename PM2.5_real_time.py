@@ -34,8 +34,13 @@ def rb_site():
     n=0
     for s in data.iloc[:,0]:
         if s == site.get():
-            pm = data.iloc[n, 11]
-            if not pm.isnumeric():
+            pm = str(data.iloc[n, 11])
+            try:
+                pm = float(pm)
+                test = True
+            except:
+                test = False
+            if test == False:
                 result1.set("目前無" + s + "站的PM2.5資料")
             else:
                 pm = int(pm)
